@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Movie } from '../../models/movie.model';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { MovieService } from '../../services/movie.service';
 
 @Component({
   selector: 'app-movie-details-page',
@@ -11,7 +13,7 @@ import { Movie } from '../../models/movie.model';
 export class MovieDetailsPageComponent {
   movie!: Movie;
 
-  constructor() {
+  constructor(private route: ActivatedRoute, private movieService: MovieService) {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const movieId = Number(params.get('id'));
       this.movieService.getMovieDetails(movieId).subscribe((data) => {

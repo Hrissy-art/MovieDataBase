@@ -10,12 +10,18 @@
   </div>
 
   <div class="movie-grid">
-    @for (movie of movies) {
+    @for (movie of movies; track movie.id) {
       <app-movie-thumbnail
         [movie]="movie"
         [isFavorite]="isFavorite(movie.id)"
         (toggleFavorite)="toggleFavorite(movie)"
       ></app-movie-thumbnail>
     }
+  <div *ngFor="let movie of movies;" class="movie-grid">
+    <app-movie-thumbnail
+      [movie]="movie"
+      [isFavorite]="isFavorite(movie.id)"
+      (toggleFavorite)="toggleFavorite(movie)"
+    ></app-movie-thumbnail>
   </div>
 </div>

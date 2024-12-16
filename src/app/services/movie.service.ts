@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Movie } from '../models/movie.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,12 @@ export class MovieService {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer Bearer TON_JETON_ACCESS'
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYmZjYmI3MzQ4NjA0NmExNzhiZWQ0NTk3NTAyNDJjMyIsIm5iZiI6MTczNDM0MDU3Ny43MzEsInN1YiI6IjY3NWZlZmUxZDYzMTNjNzk1MjQxODk5NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.W4XZ1L3XWDax6sDgMk-xHGF0MYq0dKGuyRMi-ACyTk0'
     }
   };
 
   private favorites: Movie[] = [];
+  constructor(private http: HttpClient) {}
 
   // Récupérer les films populaires
   getPopularMovies(): Observable<any> {
